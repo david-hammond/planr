@@ -22,7 +22,7 @@ calculate_plan <- function(plan, plan_start_date, holiday_dates = NULL, weekend_
                          holidays = holiday_dates,
                          weekdays = weekend_days)
   plan <- plan %>% filter(include_in_gantt == 1) %>%
-    mutate(duration = as.numeric(offset(today(), days, "actual")-today()))
+    mutate(duration = days)
   crit = plan %>% select(id, activity, duration, pred) %>%
     rename(name = activity) %>% distinct() %>% mutate(pred = replace_na(pred, "")) %>%
     mutate(pred = factor(pred), name = factor(name)) %>%
