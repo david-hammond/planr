@@ -19,7 +19,7 @@
 calculate_plan <- function(plan, plan_start_date, holiday_dates = NULL, weekend_days = c("saturday", "sunday")) {
   plan <- plan %>% filter(include_in_gantt == 1) %>%
     mutate(duration = days)
-  df = plan %>% select(id, activity, duration, pred) %>%
+  crit = plan %>% select(id, activity, duration, pred) %>%
     rename(name = activity) %>% distinct() %>% mutate(pred = replace_na(pred, "")) %>%
     mutate(pred = factor(pred), name = factor(name)) %>%
     critical_path(start_date = plan_start_date, holiday_dates = holiday_dates)
