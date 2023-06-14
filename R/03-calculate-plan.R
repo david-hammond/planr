@@ -22,7 +22,7 @@ calculate_plan <- function(plan, plan_start_date, holiday_dates = NULL, weekend_
   df = plan %>% select(id, activity, duration, pred) %>%
     rename(name = activity) %>% distinct() %>% mutate(pred = replace_na(pred, "")) %>%
     mutate(pred = factor(pred), name = factor(name)) %>%
-    critical_path(df,start_date = plan_start_date, holiday_dates = holiday_dates)
+    critical_path(start_date = plan_start_date, holiday_dates = holiday_dates)
   crit = crit$results
   crit = crit %>% select(id, start_date, end_date) %>% mutate(id = as.numeric(id)) %>%
     distinct()
