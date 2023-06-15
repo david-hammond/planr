@@ -29,7 +29,7 @@ cost_plan <- function(plan, currency, filename) {
     select(-symbol, -iso_code)
   options(knitr.kable.NA = '')
   budget %>%
-    kbl(format="latex", booktabs=TRUE, escape = F,
+    kbl(format="latex", booktabs=TRUE,
         col.names = c("Work Package",
                                 "Activity",
                                 "Staff Level",
@@ -37,10 +37,10 @@ cost_plan <- function(plan, currency, filename) {
                                 "Number of Staff",
                                 "Days Per Staff",
                                 "Total Days",
-                                paste0("Total Cost\n", currency, ""))) %>%
+                                paste0("Total ", currency))) %>%
     collapse_rows(columns = 1,
                   valign = "middle") %>%
     row_spec(c(0,(nrow(budget)-2):nrow(budget)), bold = TRUE) %>%
-    save_kable(budget_file)
+    save_kable(filename)
   return(budget)
 }
