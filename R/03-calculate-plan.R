@@ -16,7 +16,7 @@
 #' @export
 #'
 
-calculate_plan <- function(plan, plan_start_date, holiday_dates = NULL, weekend_days = c("saturday", "sunday")) {
+calculate_plan <- function(plan, plan_start_date, holiday_dates = NULL) {
   plan <- plan %>% filter(include_in_gantt == 1) %>%
     mutate(duration = days)
   crit = plan %>% select(id, activity, duration, pred) %>%

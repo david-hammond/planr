@@ -19,13 +19,12 @@
 #' @export
 #'
 
-plot_plan <- function(plan, plan_start_date, holiday_dates = NULL, weekend_days = c("saturday", "sunday"), filename) {
-  tmp = calculate_plan(plan, plan_start_date, holiday_dates, weekend_days)
+plot_plan <- function(plan, plan_start_date, holiday_dates = NULL) {
+  tmp = calculate_plan(plan, plan_start_date, holiday_dates)
   p = ganttrify(project = tmp,
             by_date = T,
             exact_date = T,
             font_family = "Roboto Condensed",
             label_wrap = T)
-  ggsave(p, filename = filename)
   return(p)
 }

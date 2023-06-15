@@ -4,13 +4,7 @@
 \alias{plot_plan}
 \title{Calculates actual duration of tasks accounting for holidays}
 \usage{
-plot_plan(
-  plan,
-  plan_start_date,
-  holiday_dates = NULL,
-  weekend_days = c("saturday", "sunday"),
-  filename
-)
+plot_plan(plan, plan_start_date, holiday_dates = NULL)
 }
 \arguments{
 \item{plan}{vector of dates of public holidays}
