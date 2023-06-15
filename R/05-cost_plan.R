@@ -20,7 +20,8 @@
 #'
 
 cost_plan <- function(plan, currency, filename) {
-  budget = plan %>% select(wp, activity, staff, staff_cost, num_staff, days, total_days, total_cost) %>%
+  budget = plan %>% filter(total_cost > 0) %>%
+    select(wp, activity, staff, staff_cost, num_staff, days, total_days, total_cost) %>%
     mutate(iso_code = currency) %>% left_join(currency_info %>% select(iso_code, symbol)) %>%
     mutate(staff_cost = scales::dollar(staff_cost, prefix = symbol),
            total_cost = scales::dollar(total_cost, prefix = symbol)) %>%
