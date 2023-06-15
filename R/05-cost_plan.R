@@ -10,7 +10,7 @@
 #' @importFrom projmanr critical_path
 #' @importFrom dplyr mutate select distinct rename
 #' @importFrom ganttrify ganttrify
-#' @importFrom kableExtra kbl collapse_rows row_spec save_kable
+#' @importFrom kableExtra kbl collapse_rows row_spec save_kable linebreak
 #'
 #' @return Actual duration of tasks
 #' @examples
@@ -28,18 +28,19 @@ cost_plan <- function(plan, currency, filename) {
     filter(!(num_staff == 0 & !is.na(days))) %>%
     select(-symbol, -iso_code)
   options(knitr.kable.NA = '')
-   budget %>%
-    kbl(format="latex", booktabs=TRUE,col.names = c("Work Package",
-                                                    "Activity",
-                                                    "Staff Level",
-                                                    "Daily Rate",
-                                                    "Number of Staff",
-                                                    "Days Per Staff",
-                                                    "Total Days",
-                                                    "Total Cost")) %>%
+  budget %>%
+    kbl(format="latex", booktabs=TRUE, escape = F,
+        col.names = c("Work Package",
+                                "Activity",
+                                "Staff Level",
+                                "Daily Rate",
+                                "Number of Staff",
+                                "Days Per Staff",
+                                "Total Days",
+                                paste0("Total Cost\n", currency, ""))) %>%
     collapse_rows(columns = 1,
                   valign = "middle") %>%
     row_spec(c(0,(nrow(budget)-2):nrow(budget)), bold = TRUE) %>%
-    save_kable(filename)
+    save_kable(budget_file)
   return(budget)
 }
