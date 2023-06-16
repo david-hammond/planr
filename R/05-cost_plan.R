@@ -11,6 +11,7 @@
 #' @importFrom dplyr mutate select distinct rename
 #' @importFrom ganttrify ganttrify
 #' @importFrom kableExtra kbl collapse_rows row_spec save_kable linebreak
+#' @importFrom pdftools pdf_convert
 #'
 #' @return Actual duration of tasks
 #' @examples
@@ -42,5 +43,6 @@ cost_plan <- function(plan, currency, filename) {
                   valign = "middle") %>%
     row_spec(c(0,(nrow(budget)-2):nrow(budget)), bold = TRUE) %>%
     save_kable(filename)
+  pdf_convert(filename, filenames = gsub("pdf", "png", filename), dpi = 600)
   return(budget)
 }
