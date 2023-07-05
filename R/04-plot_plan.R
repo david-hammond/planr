@@ -20,8 +20,7 @@
 #'
 
 plot_plan <- function(plan) {
-  tmp = calculate_plan(plan)
-  p = ganttrify(project = tmp,
+  p = ganttrify(project = plan,
             by_date = T,
             exact_date = T,
             font_family = "Roboto Condensed",
