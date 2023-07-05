@@ -19,8 +19,8 @@
 #' @export
 #'
 
-plot_plan <- function(plan, plan_start_date, holiday_dates = NULL) {
-  tmp = calculate_plan(plan, plan_start_date, holiday_dates)
+plot_plan <- function(plan) {
+  tmp = calculate_plan(plan)
   p = ganttrify(project = tmp,
             by_date = T,
             exact_date = T,

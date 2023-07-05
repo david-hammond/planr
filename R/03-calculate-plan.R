@@ -16,9 +16,9 @@
 #' @export
 #'
 
-calculate_plan <- function(plan, plan_start_date, holiday_dates = NULL) {
+calculate_plan <- function(plan, plan_start_date, holiday_dates = NULL, FTE = 1) {
   plan <- plan %>% filter(include_in_gantt == 1) %>%
-    mutate(duration = days)
+    mutate(duration = days/FTE)
   crit = plan %>% select(id, activity, duration, pred) %>%
     rename(name = activity) %>% distinct() %>% mutate(pred = replace_na(pred, "")) %>%
     mutate(pred = factor(pred), name = factor(name)) %>%
