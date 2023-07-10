@@ -8,7 +8,9 @@
 #'
 
 create_plan <- function(projectname) {
-  dir.create(file.path("munge", projectname))
-  file.copy("./data/template/budget-template.xlsx", file.path("munge", projectname, paste0(projectname, ".xlsx")))
-  file.copy("./data/template/template-script.R", file.path("munge", projectname, paste0(projectname, ".R")))
+  n = length(list.dirs("munge")) - 1
+  foldername = paste(sprintf("%02d", n), projectname, sep = "-")
+  dir.create(file.path("munge", foldername))
+  file.copy("./data/template/budget-template.xlsx", file.path("munge", foldername, paste0(projectname, ".xlsx")))
+  file.copy("./data/template/template-script.R", file.path("munge", foldername, paste0(projectname, ".R")))
 }

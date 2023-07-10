@@ -4,7 +4,7 @@
 \alias{calculate_plan}
 \title{Calculates actual duration of tasks accounting for holidays}
 \usage{
-calculate_plan(plan, plan_start_date, holiday_dates = NULL)
+calculate_plan(plan, plan_start_date, holiday_dates = NULL, FTE = 1)
 }
 \arguments{
 \item{plan}{vector of dates of public holidays}

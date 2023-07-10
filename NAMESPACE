@@ -3,6 +3,7 @@
 export("%>%")
 export(calculate_plan)
 export(cost_plan)
+export(create_plan)
 export(plot_plan)
 importFrom(bizdays,create.calendar)
 importFrom(bizdays,offset)
