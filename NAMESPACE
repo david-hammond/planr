@@ -2,6 +2,7 @@
 
 export("%>%")
 export(calculate_plan)
+export(clone_plan)
 export(cost_plan)
 export(create_plan)
 export(plot_plan)
