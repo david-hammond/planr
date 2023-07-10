@@ -13,4 +13,5 @@ create_plan <- function(projectname) {
   dir.create(file.path("munge", foldername))
   file.copy("./data/template/budget-template.xlsx", file.path("munge", foldername, paste0(projectname, ".xlsx")))
   file.copy("./data/template/template-script.R", file.path("munge", foldername, paste0(projectname, ".R")))
+  setwd(file.path("munge", foldername))
 }
