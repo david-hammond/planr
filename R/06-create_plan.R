@@ -8,7 +8,7 @@
 #'
 
 create_plan <- function(projectname) {
-  n = length(list.dirs("./munge/"), -1)
+  n = length(list.dirs("./munge/"))-1
   fildername = paste(sprintf("%03d", n), projectname, sep = "-")
   foldername = file.path("munge", projectname)
   dir.create(foldername)
